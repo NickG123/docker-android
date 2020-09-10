@@ -31,7 +31,7 @@ RUN apt update -qq && apt install -qq -y --no-install-recommends \
         git \
         cmake \
         ruby-full \
-        openjdk-8-jdk \
+        openjdk-14-jdk \
         gnupg2 \
         python \
         python3-distutils \
@@ -47,11 +47,6 @@ RUN curl -sL https://deb.nodesource.com/setup_${NODE_VERSION} | bash - \
     && apt-get update -qq \
     && apt-get install -qq -y --no-install-recommends nodejs yarn \
     && rm -rf /var/lib/apt/lists/*
-
-# download and install buck using debian package
-RUN curl -sS -L https://github.com/facebook/buck/releases/download/v${BUCK_VERSION}/buck.${BUCK_VERSION}_all.deb -o /tmp/buck.deb \
-    && dpkg -i /tmp/buck.deb \
-    && rm /tmp/buck.deb
 
 # Full reference at https://dl.google.com/android/repository/repository2-1.xml
 # download and unpack android
